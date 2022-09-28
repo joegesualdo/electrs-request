@@ -1,0 +1,15 @@
+[package]
+name = "electrs-request"
+version = "0.1.0"
+edition = "2021"
+description = "Send RPC commands to a Electrs server"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bitcoin-utils = "0.1.1"
+electrum-client = "0.12.0"
+hex-utilities = "0.1.5"
+serde = { version = "=1.0", features = ["derive"] }
+serde_json = { version = "=1.0" }
