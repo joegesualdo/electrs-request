@@ -1,5 +1,5 @@
 # Electrs Request 
-> Send RPC commands to a Electrs server.
+> Send RPC commands to an Electrs server.
 
 ---
 
