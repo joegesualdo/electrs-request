@@ -18,7 +18,7 @@ impl Client {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BlockchainRelayFeeCommandResponse(f64);
+pub struct BlockchainRelayFeeCommandResponse(pub f64);
 
 pub struct BlockchainRelayFeeCommand {}
 impl BlockchainRelayFeeCommand {
@@ -78,7 +78,7 @@ pub struct UnspentResponse {
     pub value: u64,
 }
 #[derive(Debug, Serialize, Deserialize)]
-pub struct BlockchainScriptHashListUnspentCommandResponse(Vec<UnspentResponse>);
+pub struct BlockchainScriptHashListUnspentCommandResponse(pub Vec<UnspentResponse>);
 impl BlockchainScriptHashListUnspentCommand {
     pub fn new(script_hash: &str) -> Self {
         BlockchainScriptHashListUnspentCommand {
