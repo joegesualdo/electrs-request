@@ -4,7 +4,7 @@ use bitcoin_utils::{
 };
 use electrs_request::{
     BlockchainRelayFeeCommand, BlockchainScriptHashGetBalanceCommand,
-    BlockchainScriptHashListUnspentCommand, Client,
+    BlockchainScriptHashGetHistoryCommand, BlockchainScriptHashListUnspentCommand, Client,
 };
 use hex_utilities::convert_big_endian_hex_to_little_endian;
 
@@ -31,6 +31,10 @@ fn main() {
         .call(&client)
         .unwrap();
     println!("unspent: {:#?}", unspent_response);
+    let history_response = BlockchainScriptHashGetHistoryCommand::new(&p2pkh_script_sha256_le)
+        .call(&client)
+        .unwrap();
+    println!("history: {:#?}", history_response);
 
     // let get_balance_method = "blockchain.scripthash.get_balance";
     // let list_unspent_method = "blockchain.scripthash.listunspent";

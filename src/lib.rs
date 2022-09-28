@@ -99,3 +99,34 @@ impl BlockchainScriptHashListUnspentCommand {
         Ok(list_unspent_command_response)
     }
 }
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BlockchainScriptHashGetHistoryCommand {
+    pub script_hash: String,
+}
+#[derive(Debug, Serialize, Deserialize)]
+pub struct HistoricalTransaction {
+    pub height: u64,
+    pub tx_hash: String,
+}
+#[derive(Debug, Serialize, Deserialize)]
+pub struct BlockchainScriptHashGetHistoryCommandResponse(pub Vec<HistoricalTransaction>);
+impl BlockchainScriptHashGetHistoryCommand {
+    pub fn new(script_hash: &str) -> Self {
+        BlockchainScriptHashGetHistoryCommand {
+            script_hash: script_hash.to_string(),
+        }
+    }
+    pub fn call(
+        &self,
+        client: &Client,
+    ) -> Result<BlockchainScriptHashGetHistoryCommandResponse, electrum_client::Error> {
+        let get_history_method = "blockchain.scripthash.get_history";
+        let params = vec![Param::String(self.script_hash.to_owned())];
+        let get_history_response_result = client
+            .electrum_client
+            .raw_call(get_history_method, params)?;
+        let get_history_command_response: BlockchainScriptHashGetHistoryCommandResponse =
+            serde_json::from_value(get_history_response_result).unwrap();
+        Ok(get_history_command_response)
+    }
+}

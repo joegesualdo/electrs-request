@@ -1,6 +1,6 @@
 [package]
 name = "electrs-request"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Send RPC commands to an Electrs server"
 license = "MIT"
