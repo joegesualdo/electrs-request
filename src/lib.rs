@@ -105,7 +105,8 @@ pub struct BlockchainScriptHashGetHistoryCommand {
 }
 #[derive(Debug, Serialize, Deserialize)]
 pub struct HistoricalTransaction {
-    pub height: u64,
+    // can be negative when block hasn't been confirmed
+    pub height: i64,
     pub tx_hash: String,
 }
 #[derive(Debug, Serialize, Deserialize)]

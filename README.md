@@ -17,7 +17,7 @@ If you're looking for a higher level api for querying information from electrum 
 > Add package to Cargo.toml file
 ```rust
 [dependencies]
-electrs-request = "0.1.2"
+electrs-request = "0.1.3"
 ```
 
 ## Usage:

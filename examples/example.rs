@@ -17,7 +17,7 @@ fn main() {
     let response = BlockchainRelayFeeCommand::new().call(&client).unwrap();
     println!("relay fee result: {:?}", response);
 
-    let p2pkh_address = "mv7RvNNQ7HpQf2diQai5hgpeuzkFoAQP9G".to_string();
+    let p2pkh_address = "mw1Bk1AJSs9zaiL5RaQyp1YGfkuruvZAXR".to_string();
     let p2pkh_pk_hash = get_public_key_hash_from_address(&p2pkh_address);
     let p2pkh_script = format!("{}{}{}", "76a914", p2pkh_pk_hash, "88ac");
     let p2pkh_script_sha256 = bitcoin_utils::sha256_hex(&p2pkh_script);
